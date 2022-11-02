@@ -1,0 +1,108 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  text-align: center;
+}
+.weather {
+  max-width: 500px;
+  padding: 30px 30px 0 30px;
+  background: linear-gradient(
+    179deg,
+    rgb(110, 144, 242) 3.3%,
+    rgb(245, 193, 193) 100%
+  );
+  border-radius: 20px;
+}
+
+form {
+  padding-bottom: 20px;
+}
+h1.city-info {
+  color: rgb(83, 51, 153);
+  font-size: 40px;
+  text-align: center;
+}
+h5 {
+  font-size: 18px;
+  color: rgb(89, 100, 111);
+  text-align: center;
+  padding-bottom: 0;
+}
+.weather-details {
+  padding-top: 0;
+}
+.card1 {
+  font-size: 18px;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 8px;
+  margin: 15px;
+  box-shadow: 5px 5px 5px #865b8896;
+  cursor: pointer;
+  padding: 10px;
+}
+div.forecast {
+  font-size: 12px;
+  color: rgb(104, 104, 104);
+  font-weight: 300;
+  padding-top: 10px;
+}
+.forecast-title {
+  text-align: left;
+  opacity: 60%;
+}
+.forecast-temp-min {
+  opacity: 60%;
+}
+footer {
+  font-size: 10px;
+  color: rgb(93, 92, 92);
+  padding-bottom: 5px;
+  padding-top: 0;
+}
+
+a.link {
+  text-decoration: none;
+  color: rgb(42, 59, 168);
+}
+a.link:hover {
+  text-decoration: underline;
+}
+.card {
+  margin: 25px auto;
+}
+
+.week-temp {
+  font-size: 10px;
+}
+.temp-unit {
+  position: relative;
+  top: -25px;
+  font-size: 15px;
+  line-height: 4px;
+}
+.weather-details {
+  text-align: center;
+}
+#city-name,
+#weather-description {
+  text-transform: capitalize;
+}
+#current-temp {
+  font-size: 50px;
+  color: rgb(83, 51, 153);
+}
+
+#date {
+  text-align: right;
+}
+#coded-by {
+  text-align: right;
+}
+.city-temp .active {
+  color: rgb(83, 51, 153);
+  cursor: default;
+}
+.city-temp .active:hover {
+  text-decoration: none;
+}
