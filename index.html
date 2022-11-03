@@ -15,7 +15,7 @@
       src="https://kit.fontawesome.com/1b30e02b17.js"
       crossorigin="anonymous"
     ></script>
-    <title>Weather App | Lakshmi M S</title>
+    <title>Weather Forecast | Lakshmi M S</title>
     <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
@@ -33,7 +33,7 @@
                     placeholder="Search for a city"
                     autofocus="on"
                   />
-                  <button type="submit" class="btn btn-outline-secondary" id>
+                  <button type="submit" class="btn btn-outline-dark" id>
                     <i class="fa-solid fa-magnifying-glass"></i>
                   </button>
                 </div>
@@ -41,7 +41,7 @@
               <div class="col-2">
                 <button
                   type="button"
-                  class="btn btn-light my-location"
+                  class="btn btn-outline-dark my-location"
                   id="my-location"
                   value="my-location"
                 >
@@ -55,30 +55,60 @@
         <div class="city-name">
           <h1 class="city-info" id="city-name"></h1>
         </div>
-        <div class="city-temp">
-          <img src="" alt="weather_icon" class="temp-icon" id="temp-icon" />
-          <strong><span id="current-temp"></span></strong
-          ><span class="temp-unit"
-            ><a href="#" class="link templink-c active" id="celsius-link">°C</a>
-            | <a href="#" class="link templink-f" id="fahrenhite-link">°F</a>
-          </span>
+        <div class="row city-temp">
+          <div class="col-4">
+            <span id="current-temp"></span
+            ><span class="temp-unit"
+              ><a href="#" class="link templink-c active" id="celsius-link"
+                >°C</a
+              >
+              |
+              <a href="#" class="link templink-f" id="fahrenhite-link">°F</a>
+            </span>
+          </div>
+          <div class="col-3">
+            <img
+              src=""
+              alt="weather_icon"
+              class="temp-icon"
+              id="temp-icon"
+              width="100"
+            />
+          </div>
+          <div class="col-5">
+            <br />
+            <span id="date">Sunday, 17:00</span><br />
+            <span id="weather-description"></span>
+          </div>
         </div>
-
-        <h5>
-          <span id="date">Sunday, 17:00</span> |
-          <span id="weather-description"></span>
-        </h5>
         <div class="weather-details">
           <div class="row">
-            <div class="col card1">Humidity:<span id="humidity"></span>%</div>
-            <div class="col card1">Wind:<span id="wind"></span>km/h</div>
+            <div class="col card1">
+              <i class="fa-solid fa-temperature-three-quarters"></i> Feels like:
+              <span id="feels-like"></span>°
+            </div>
+            <div class="col card1">
+              <i class="fa-solid fa-droplet"></i> Humidity:
+              <span id="humidity"></span>%
+            </div>
+            <div class="col card1">
+              <i class="fa-solid fa-sun"></i> Sunrise:
+              <span id="sunrise">23:59</span>
+            </div>
           </div>
           <div class="row">
             <div class="col card1">
-              Feels like:<span id="feels-like"></span>°
+              <i class="fa-solid fa-temperature-arrow-up"></i> H:
+              <span id="temp-max"></span>°
+              <i class="fa-solid fa-temperature-arrow-down"></i> L:
+              <span id="temp-min"></span>°
             </div>
             <div class="col card1">
-              H:<span id="temp-max"></span>° | L:<span id="temp-min"></span>°
+              <i class="fa-solid fa-wind"></i> Wind: <span id="wind"></span>km/h
+            </div>
+            <div class="col card1">
+              <i class="fa-solid fa-moon"></i> Sunset:
+              <span id="sunset">00:00</span>
             </div>
           </div>
         </div>
@@ -97,9 +127,8 @@
           <div class="row">
             <div class="col-5">
               <span class="lastUpdated" id="lastUpdated"
-                >Last updated:<span id="lastUpdatedDate"
-                  >Sunday, 17:00</span
-                ></span
+                >Last updated:
+                <span id="lastUpdatedDate">Sunday, 17:00</span></span
               >
             </div>
             <div class="col-7">

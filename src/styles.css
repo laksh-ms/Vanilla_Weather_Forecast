@@ -2,15 +2,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0 auto;
   text-align: center;
+  color: rgb(54, 51, 51);
 }
 .weather {
   max-width: 500px;
   padding: 30px 30px 0 30px;
-  background: linear-gradient(
-    179deg,
-    rgb(110, 144, 242) 3.3%,
-    rgb(245, 193, 193) 100%
-  );
+  background: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+  background: linear-gradient(-225deg, #5d9fff 0%, #b8dcff 48%, #6bbbff 100%);
   border-radius: 20px;
 }
 
@@ -18,79 +16,84 @@ form {
   padding-bottom: 20px;
 }
 h1.city-info {
-  color: rgb(83, 51, 153);
   font-size: 40px;
   text-align: center;
 }
-h5 {
-  font-size: 18px;
-  color: rgb(89, 100, 111);
-  text-align: center;
-  padding-bottom: 0;
+
+footer {
+  font-size: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+hr {
+  margin: 5px auto;
 }
 .weather-details {
   padding-top: 0;
 }
 .card1 {
-  font-size: 18px;
+  font-size: 15px;
   text-align: center;
   border: 1px solid white;
   border-radius: 8px;
-  margin: 15px;
+  margin: 6px;
   box-shadow: 5px 5px 5px #865b8896;
-  cursor: pointer;
-  padding: 10px;
+  padding: 5px;
 }
-div.forecast {
-  font-size: 12px;
-  color: rgb(104, 104, 104);
+.forecast {
+  font-size: 15px;
+  opacity: 80%;
   font-weight: 300;
-  padding-top: 10px;
+  padding-top: 15px;
 }
 .forecast-title {
   text-align: left;
   opacity: 60%;
 }
+.forecast-temp-min,
+.forecast-temp-max {
+  font-size: 13px;
+}
 .forecast-temp-min {
   opacity: 60%;
-}
-footer {
-  font-size: 10px;
-  color: rgb(93, 92, 92);
-  padding-bottom: 5px;
-  padding-top: 0;
-}
-
-a.link {
-  text-decoration: none;
-  color: rgb(42, 59, 168);
-}
-a.link:hover {
-  text-decoration: underline;
 }
 .card {
   margin: 25px auto;
 }
-
 .week-temp {
   font-size: 10px;
 }
 .temp-unit {
   position: relative;
-  top: -25px;
-  font-size: 15px;
+  top: -30px;
+  font-size: 18px;
   line-height: 4px;
 }
 .weather-details {
   text-align: center;
 }
+
+a.link {
+  text-decoration: none;
+}
+a.link:hover {
+  text-decoration: underline;
+}
+.city-temp .active {
+  color: rgb(54, 51, 51);
+  cursor: default;
+}
+.city-temp .active:hover {
+  text-decoration: none;
+}
+
 #city-name,
 #weather-description {
   text-transform: capitalize;
 }
+
 #current-temp {
-  font-size: 50px;
-  color: rgb(83, 51, 153);
+  font-size: 60px;
 }
 
 #date {
@@ -98,11 +101,4 @@ a.link:hover {
 }
 #coded-by {
   text-align: right;
-}
-.city-temp .active {
-  color: rgb(83, 51, 153);
-  cursor: default;
-}
-.city-temp .active:hover {
-  text-decoration: none;
 }

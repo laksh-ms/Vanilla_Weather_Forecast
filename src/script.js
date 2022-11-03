@@ -21,26 +21,40 @@ function formatDate(timestamp) {
     mins = "0".concat(`${mins}`);
   }
   return `${day}, ${hours}:${mins}`;
-  //console.log(formatDate());
+}
+function formatForecastDay(timestamp) {
+  let now = new Date(timestamp);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[now.getDay()];
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let weekForecast = response.data.daily;
   let forecasteElement = document.querySelector("#forecast-week");
   let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-        <div class="forecast-day">${day}</div>
-        <div class="forecast-icon"><img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather_icon" class="temp-icon" width="60" id="temp-icon" />
+  weekForecast.forEach(function (forecastDay, index) {
+    if (0 < index && index < 7) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+        <div class="forecast-day">${formatForecastDay(
+          forecastDay.dt * 1000
+        )}</div>
+        <div class="forecast-icon"><img src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png" alt="weather_icon" width="60" />
         </div>
         <div class="forecast-temp">
-          <span class="forecast-temp-max">17</span>°/
-          <span class="forecast-temp-min">7</span>°
+          <span class="forecast-temp-max">${Math.round(
+            forecastDay.temp.max
+          )}</span>° 
+          <span class="forecast-temp-min">${Math.round(
+            forecastDay.temp.min
+          )}</span>°
         </div>
       </div>`;
+      //add tempC[]
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecasteElement.innerHTML = forecastHTML;
@@ -51,8 +65,20 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
+function formatSunTime(timestamp) {
+  let now = new Date(timestamp);
+  let hours = now.getHours();
+  let mins = now.getMinutes();
+  if (hours < 10) {
+    hours = "0".concat(`${hours}`);
+  }
+  if (mins < 10) {
+    mins = "0".concat(`${mins}`);
+  }
+  return `${hours}:${mins}`;
+}
+
 function showWeather(response) {
-  //console.log(response.data);
   document.querySelector(
     "#city-name"
   ).innerHTML = `${response.data.name}, ${response.data.sys.country}`;
@@ -64,7 +90,9 @@ function showWeather(response) {
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = response.data.wind.speed;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.main.feels_like
   );
@@ -92,6 +120,16 @@ function showWeather(response) {
   document
     .querySelector("#temp-icon")
     .setAttribute("alt", response.data.weather[0].description);
+  document.querySelector("#sunrise").innerHTML = formatSunTime(
+    response.data.sys.sunrise * 1000 +
+      timeOffSet * 60000 +
+      response.data.timezone * 1000
+  );
+  document.querySelector("#sunset").innerHTML = formatSunTime(
+    response.data.sys.sunset * 1000 +
+      timeOffSet * 60000 +
+      response.data.timezone * 1000
+  );
 
   getForecast(response.data.coord);
 }
@@ -104,7 +142,6 @@ function searchWeather(city) {
 function searchCity(event) {
   event.preventDefault();
   let searchCity = document.querySelector("#search-city");
-  console.log(searchCity.value);
   if (searchCity.value !== null) {
     searchWeather(searchCity.value);
   } else {
