@@ -165,7 +165,7 @@ function convertTempC(event) {
   forecastMaxTemp.forEach(function (maxTemp, index) {
     maxTemp.innerHTML = Math.round(forecastMax[index]);
   });
-  let forecastMinTemp = document.querySelectorAll(".forecast-temp-Min");
+  let forecastMinTemp = document.querySelectorAll(".forecast-temp-min");
   forecastMinTemp.forEach(function (minTemp, index) {
     minTemp.innerHTML = Math.round(forecastMin[index]);
   });
