@@ -32,8 +32,12 @@ function displayForecast(response) {
   let weekForecast = response.data.daily;
   let forecasteElement = document.querySelector("#forecast-week");
   let forecastHTML = `<div class="row">`;
+  forecastMax = [];
+  forecastMin = [];
   weekForecast.forEach(function (forecastDay, index) {
     if (0 < index && index < 7) {
+      forecastMax[index - 1] = forecastDay.temp.max;
+      forecastMin[index - 1] = forecastDay.temp.min;
       forecastHTML =
         forecastHTML +
         `<div class="col-2">
@@ -53,7 +57,6 @@ function displayForecast(response) {
           )}</span>°
         </div>
       </div>`;
-      //add tempC[]
     }
   });
   forecastHTML = forecastHTML + `</div>`;
@@ -158,6 +161,14 @@ function convertTempC(event) {
   document.querySelector("#feels-like").innerHTML = Math.round(feelsLike);
   document.querySelector("#temp-max").innerHTML = Math.round(maxTemp);
   document.querySelector("#temp-min").innerHTML = Math.round(minTemp);
+  let forecastMaxTemp = document.querySelectorAll(".forecast-temp-max");
+  forecastMaxTemp.forEach(function (maxTemp, index) {
+    maxTemp.innerHTML = Math.round(forecastMax[index]);
+  });
+  let forecastMinTemp = document.querySelectorAll(".forecast-temp-Min");
+  forecastMinTemp.forEach(function (minTemp, index) {
+    minTemp.innerHTML = Math.round(forecastMin[index]);
+  });
 }
 
 function convertTempF(event) {
@@ -175,6 +186,14 @@ function convertTempF(event) {
   document.querySelector("#temp-min").innerHTML = Math.round(
     (minTemp * 9) / 5 + 32
   );
+  let forecastMaxTemp = document.querySelectorAll(".forecast-temp-max");
+  forecastMaxTemp.forEach(function (maxTemp, index) {
+    maxTemp.innerHTML = Math.round((forecastMax[index] * 9) / 5 + 32);
+  });
+  let forecastMinTemp = document.querySelectorAll(".forecast-temp-min");
+  forecastMinTemp.forEach(function (minTemp, index) {
+    minTemp.innerHTML = Math.round((forecastMin[index] * 9) / 5 + 32);
+  });
 }
 
 function showMyLocation(position) {
@@ -207,6 +226,8 @@ let celsiusTemp = null;
 let feelsLike = null;
 let maxTemp = null;
 let minTemp = null;
+let forecastMax = [];
+let forecastMin = [];
 let localDate = new Date();
 let timeOffSet = localDate.getTimezoneOffset();
 searchWeather("Bengaluru");
