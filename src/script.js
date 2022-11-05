@@ -81,6 +81,24 @@ function formatSunTime(timestamp) {
   return `${hours}:${mins}`;
 }
 
+function setBackground(citydate, sunrise, sunset) {
+  if (citydate > sunrise && citydate < sunset) {
+    document
+      .querySelector(".weather")
+      .setAttribute(
+        "style",
+        `background: linear-gradient(-225deg, #5d9fff 0%, #b8dcff 48%, #6bbbff 100%)`
+      );
+  } else {
+    document
+      .querySelector(".weather")
+      .setAttribute(
+        "style",
+        `background: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)`
+      );
+  }
+}
+
 function showWeather(response) {
   document.querySelector(
     "#city-name"
@@ -108,9 +126,11 @@ function showWeather(response) {
     response.data.main.temp_min
   );
   minTemp = response.data.main.temp_min;
-  document.querySelector("#date").innerHTML = formatDate(
-    response.data.dt * 1000 + timeOffSet * 60000 + response.data.timezone * 1000
-  );
+  let dateTimestamp =
+    response.data.dt * 1000 +
+    timeOffSet * 60000 +
+    response.data.timezone * 1000;
+  document.querySelector("#date").innerHTML = formatDate(dateTimestamp);
   document.querySelector("#lastUpdatedDate").innerHTML = formatDate(
     response.data.dt * 1000
   );
@@ -123,18 +143,19 @@ function showWeather(response) {
   document
     .querySelector("#temp-icon")
     .setAttribute("alt", response.data.weather[0].description);
-  document.querySelector("#sunrise").innerHTML = formatSunTime(
+  let raiseTimestamp =
     response.data.sys.sunrise * 1000 +
-      timeOffSet * 60000 +
-      response.data.timezone * 1000
-  );
-  document.querySelector("#sunset").innerHTML = formatSunTime(
+    timeOffSet * 60000 +
+    response.data.timezone * 1000;
+  document.querySelector("#sunrise").innerHTML = formatSunTime(raiseTimestamp);
+  let setTimestamp =
     response.data.sys.sunset * 1000 +
-      timeOffSet * 60000 +
-      response.data.timezone * 1000
-  );
+    timeOffSet * 60000 +
+    response.data.timezone * 1000;
+  document.querySelector("#sunset").innerHTML = formatSunTime(setTimestamp);
 
   getForecast(response.data.coord);
+  setBackground(dateTimestamp, raiseTimestamp, setTimestamp);
 }
 
 function searchWeather(city) {
