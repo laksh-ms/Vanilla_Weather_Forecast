@@ -89,6 +89,7 @@ function setBackground(citydate, sunrise, sunset) {
         "style",
         `background: linear-gradient(-225deg, #5d9fff 0%, #b8dcff 48%, #6bbbff 100%)`
       );
+    //document.body.style.color = "rgb(54, 51, 51)";
   } else {
     document
       .querySelector(".weather")
@@ -96,6 +97,8 @@ function setBackground(citydate, sunrise, sunset) {
         "style",
         `background: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)`
       );
+
+    //document.body.style.color = "rgb(229, 227, 227)";
   }
 }
 
@@ -242,7 +245,7 @@ let myLocationButton = document.querySelector("#my-location");
 myLocationButton.addEventListener("click", getMyLocation);
 
 let tempUnit = "metric";
-let apiKey = "40b745c14eadad7b7c4e6e4bf3b70103";
+let apiKey = "292929ff665169ef5a98dcc8cc29979a";
 let celsiusTemp = null;
 let feelsLike = null;
 let maxTemp = null;
