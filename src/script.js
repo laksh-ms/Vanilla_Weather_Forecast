@@ -245,7 +245,7 @@ let myLocationButton = document.querySelector("#my-location");
 myLocationButton.addEventListener("click", getMyLocation);
 
 let tempUnit = "metric";
-let apiKey = "292929ff665169ef5a98dcc8cc29979a";
+let apiKey = "8c78e9e7e9928cd1a2a6f923072c3dec";
 let celsiusTemp = null;
 let feelsLike = null;
 let maxTemp = null;
